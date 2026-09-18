@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flakepl"
+version = "0.3.0"
+description = "FlakePL – a Python framework for executable multi-agent process and epistemic models"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+authors = [
+    { name = "Elisson" }
+]
+
+keywords = [
+    "multi-agent systems",
+    "epistemic logic",
+    "process calculus",
+    "process algebra",
+    "formal verification",
+    "AI agents",
+    "temporal logic",
+    "dynamic epistemic logic",
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
