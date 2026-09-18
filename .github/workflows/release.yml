@@ -1,8 +1,11 @@
 name: Release to PyPI
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - "v*"
+
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -10,14 +13,27 @@ permissions:
 
 jobs:
   publish:
+    name: Build and publish package
+
     runs-on: ubuntu-latest
-    environment: pypi
+
+    environment:
+      name: pypi
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.13"
-      - run: python -m pip install --upgrade pip build
-      - run: python -m build
+          python-version: "3.12"
+
+      - name: Install build tools
+        run: python -m pip install --upgrade pip build
+
+      - name: Build package
+        run: python -m build
+
       - name: Publish package to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
