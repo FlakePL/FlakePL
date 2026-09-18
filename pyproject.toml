@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "flakepl"
-version = "0.3.0"
+version = "0.3.1"
 description = "FlakePL – a Python framework for executable multi-agent process and epistemic models"
 readme = "README.md"
 requires-python = ">=3.11"
