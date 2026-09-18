@@ -1,0 +1,36 @@
+site_name: Flake
+site_description: Agent-oriented programming and formal verification
+site_author: Flake Contributors
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed
+  - admonition
+  - attr_list
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Concepts:
+      - Agents: concepts/agents.md
+      - States and Configurations: concepts/states.md
+      - Observations and Knowledge: concepts/observations.md
+      - Verification: concepts/verification.md
+  - Examples:
+      - Two-Phase Commit: examples/two-phase-commit.md
