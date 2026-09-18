@@ -16,11 +16,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
+  build:
+    name: Build documentation
     runs-on: ubuntu-latest
 
     steps:
@@ -32,20 +29,30 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Install MkDocs
-        run: pip install mkdocs-material
+      - name: Install MkDocs Material
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install mkdocs-material
 
       - name: Build documentation
-        run: mkdocs build --strict
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+        run: |
+          python -m mkdocs build --strict
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: site
 
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
