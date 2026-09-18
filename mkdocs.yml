@@ -34,3 +34,4 @@ nav:
       - Verification: concepts/verification.md
   - Examples:
       - Two-Phase Commit: examples/two-phase-commit.md
+      - Practical Examples: examples/examples.md
